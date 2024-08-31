@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gleezle</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <h1>gleezle</h1>
+
+    <form action="/play" enctype="multipart/form-data" method="post">
+        <input type="text" name="country">
+        <button type="submit">submit</button>
+        <h2>{{distance}} km</h2>
+        <div class="bar">
+            <span></span>
+        </div>
+        <h2>{{error}}</h2>
+    </form>
+
+    <div class="restart">
+        <a href="/restart">
+            <span class="material-symbols-outlined">
+                restart_alt
+                </span>
+        </a>
+    </div>
+
+    {% set di = (distance | int) %}
+    {% set progress = (di/20) * 100 %}
+    
+    <style>
+        .bar span{
+            inset: 50% auto auto {{progress|int}}% !important;
+        }
+    </style>
+
+    <!-- <div class="icon">
+        <span class="material-symbols-outlined">public</span>
+    </div> -->
+</body>
+</html>

@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    font-family: Noto Sans;
+    box-sizing: border-box;
+}
+
+:root{
+    --fg: #000;
+    --bg: #fafffa;
+}
+
+body, html{
+    margin: 0;
+    width: 100vw;
+    background-color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+h1{
+    font-size: 5rem;
+    line-height: 1;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 15%;
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -50%);
+}
+
+form input, form button{
+    aspect-ratio: 7;
+    border-radius: 1rem;
+    outline: none;
+    background-color: transparent;
+    font-weight: 600;
+}
+
+button{
+    background: var(--fg) !important;
+    color: var(--bg);
+    border: none;
+    margin-top: 1vh;
+    cursor: pointer;
+}
+
+input{
+    padding: 0 2vh;
+}
+
+h2{
+    text-align: center;
+}
+
+.restart{
+    position: absolute;
+    inset: 1vh auto auto 1vh;
+    cursor: pointer;
+}
+
+.restart span{
+    font-size: 3rem;
+}
+
+a{
+    color: var(--fg);
+}
+
+.bar{
+    height: 2vh;
+    border-radius: 1rem;
+    /* background: linear-gradient(to right, red, orange, yellow, green, darkgreen); */
+    background: linear-gradient(to right, darkgreen, green, yellow, orange, red);
+    position: relative;
+}
+
+.bar span{
+    /* font-size: 2.5vh;
+    color: black; */
+    /* margin-bottom: -4vh; */
+    background-color: var(--bg);
+    aspect-ratio: 1;
+    height: 2vh;
+    border-radius: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    inset: 50% auto auto 5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (width < 1750px){
+    form{
+        width: 50%;
+    }
+}
+
+@media (width < 1000px){
+    form{
+        width: 75%;
+    }
+}
