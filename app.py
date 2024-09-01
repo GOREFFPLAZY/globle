@@ -29,34 +29,48 @@ def random_country():
 
 @app.route("/")
 def start():
-    if session:
+    if "country" in session:
         pass
     else:
         session["country"] = random_country()
+        session["guesses"] = list()
 
-    return render_template("index.html", distance="distance in")
+    return render_template("index.html", distance="distance in", won=False)
 
 @app.route("/restart")
 def restart():
-    session["country"] = random_country()
+    return redirect("/pop")
+
+@app.route("/pop")
+def pop():
+    session.clear()
     return redirect("/")
 
 @app.route("/play", methods=["POST"])
 def play():
-    try:
-        if session:
-            icountry = request.form["country"]
-        else:
-            return redirect("/")
-        
-        km = distance(session["country"], icountry)
-
-        if km != "error":
-            return render_template("index.html", distance=km)
-        else:
-            return render_template("index.html", distance="NaN", error="Invalid country :(")
-    except:
+    # try:
+    if session:
+        icountry = request.form["country"]
+    else:
         return redirect("/")
+    
+    km = distance(session["country"], icountry)
+
+    if km != "error":
+        g = session["guesses"]
+        if icountry.lower() not in g:
+            g.extend([icountry.lower()])
+            session["guesses"] = g
+        if km == "0":
+            won = True
+        else:
+            won = False
+        return render_template("index.html", distance=km, guesses=g, won=won)
+    else:
+        return render_template("index.html", distance="NaN", error="Invalid country :(", won=False)
+    # except:
+    #     return 'vorp'
+    #     return redirect("/")
 
 
 if __name__ == "__main__":
