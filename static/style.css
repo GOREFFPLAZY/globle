@@ -174,4 +174,12 @@ a{
     form{
         width: 75%;
     }
+
+    h1{
+        font-size: 2rem;
+    }
+
+    .country-list{
+        max-height: 20vh;
+    }
 }
