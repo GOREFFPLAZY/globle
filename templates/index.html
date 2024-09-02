@@ -9,6 +9,7 @@
 </head>
 <body>
     <h1>gleezle</h1>
+    
 
     <form action="/play" enctype="multipart/form-data" method="post">
         <input type="text" required name="country">
@@ -24,6 +25,7 @@
             {% for guess in guesses|reverse %}
                 <div class="country">
                     <img src="https://www.countryflags.com/wp-content/uploads/{{  guess  }}-flag-png-large.png" onerror="imgchange(this)">
+                    <!-- <img src=https://www.countries-ofthe-world.com/flags-normal/flag-of-{{guess|capitalize}}.png"> -->
                     <div>{{  guess|capitalize  }}</div>
                 </div>
             {% endfor %}    

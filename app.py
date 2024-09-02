@@ -6,6 +6,8 @@ app = Flask(__name__)
 app.secret_key = "gleezeborpglorp"
 
 def distance(c1, c2):
+    if c1.strip().lower() == c2.strip().lower():
+        return "0"
     try:
         url = f"https://www.luftlinie.org/{c1}/{c2}"
         result = requests.get(url)
@@ -56,16 +58,17 @@ def play():
     
     km = distance(session["country"], icountry)
 
+    #return f"{session['country']} und {icountry}"
+
     if km != "error":
         g = session["guesses"]
         if icountry.lower() not in g:
             g.extend([icountry.lower()])
             session["guesses"] = g
         if km == "0":
-            won = True
+            return render_template("index.html", distance=km, guesses=g, won=True)
         else:
-            won = False
-        return render_template("index.html", distance=km, guesses=g, won=won)
+            return render_template("index.html", distance=km, guesses=g, won=False)
     else:
         return render_template("index.html", distance="NaN", error="Invalid country :(", won=False)
     # except:
