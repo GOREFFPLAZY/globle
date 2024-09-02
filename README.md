@@ -1,4 +1,4 @@
-![where is my icon?]([http://url/to/img.png](https://github.com/czett/gleezle/blob/main/static/icon.png))
+![where is my icon?](https://github.com/czett/gleezle/blob/main/static/icon.png)
 
 # Meet [gleezle](https://gleezle.vercel.app/)!
 gleezle is an interactive geography guessing game inspired by Globle, designed for geography enthusiasts who love a challenge! Unlike Globle, which updates the country only once a day, gleezle allows players to guess a new mystery country whenever they want. Test your geographical knowledge and improve your world map skills with unlimited guesses and instant feedback.
