@@ -1,4 +1,4 @@
-# Meet gleezle!
+# Meet [gleezle](https://gleezle.vercel.app/)!
 gleezle is an interactive geography guessing game inspired by Globle, designed for geography enthusiasts who love a challenge! Unlike Globle, which updates the country only once a day, gleezle allows players to guess a new mystery country whenever they want. Test your geographical knowledge and improve your world map skills with unlimited guesses and instant feedback.
 
 ### Key Features:
@@ -12,6 +12,8 @@ gleezle is an interactive geography guessing game inspired by Globle, designed f
 
 gleezle was developed out of a love for geography and the desire to provide a more dynamic and engaging experience than existing geography games. With gleezle, you can explore the world map at your own pace, learn new countries, and challenge your friends without waiting for a daily update. Dive into the world of geography with gleezle and see how many countries you can guess correctly!
 
+Visit and play the game [here](https://gleezle.vercel.app/)!
+
 ---
 
-Feel free to fork the repository, contribute to the project, or suggest new features to make Gleezle even more fun and educational. Let's explore the world together! 🌍
+Feel free to fork the repository, contribute to the project, or suggest new features to make gleezle even more fun and educational. Let's explore the world together! 🌍
