@@ -168,6 +168,10 @@ a{
     form{
         width: 50%;
     }
+    
+    h1{
+        font-size: 2rem !important;
+    }
 }
 
 @media (width < 1000px){
@@ -176,7 +180,8 @@ a{
     }
 
     h1{
-        font-size: 2rem;
+        font-size: 1rem !important;
+        font-weight: 700;
     }
 
     .country-list{
