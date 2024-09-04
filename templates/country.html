@@ -22,6 +22,7 @@
             <span></span>
         </div>
         <h2>{{error}}</h2>
+        <h2>{{c}}</h2>
         
         <div class="country-list">
             {% for guess in guesses|reverse %}
@@ -50,6 +51,15 @@
                 restart_alt
                 </span>
         </a>
+    </div>
+
+    <div class="leaderboard">
+        {% for entry in leaderboard %}
+            <div class="entry">
+                <div class="player">{{entry[0]}}</div>
+                <div class="score">{{entry[1]}}</div>
+            </div>
+        {% endfor %}
     </div>
 
     {% set di = (distance | int) %}

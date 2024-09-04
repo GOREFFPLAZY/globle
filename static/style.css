@@ -170,6 +170,36 @@ a{
     } */
 }
 
+.leaderboard{
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: absolute;
+    inset: auto auto 0% 0%;
+    border: 1px solid var(--fg);
+    border-left: none;
+    border-bottom: none;
+}
+
+.leaderboard .entry{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5vh 2vh;
+    border-bottom: 1px solid var(--fg);
+}
+
+.leaderboard .entry .player{
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.leaderboard .entry:last-child{
+    border: none;
+}
+
 @media (width < 1750px){
     form{
         width: 50%;

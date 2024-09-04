@@ -52,6 +52,15 @@
         </a>
     </div>
 
+    <div class="leaderboard">
+        {% for entry in leaderboard %}
+            <div class="entry">
+                <div class="player">{{entry[0]}}</div>
+                <div class="score">{{entry[1]}}</div>
+            </div>
+        {% endfor %}
+    </div>
+
     {% set di = (distance | int) %}
     {% set progress = (di/20) * 100 %}
     
