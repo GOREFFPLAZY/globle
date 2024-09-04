@@ -5,7 +5,7 @@ gleezle is an interactive geography guessing game inspired by Globle, designed f
 
 ### Key Features:
 
-- **Unlimited Play:** Guess as many countries as you like, whenever you want—no need to wait for daily updates.
+- **Unlimited Play:** Guess as many countries and cities as you like, whenever you want—no need to wait for daily updates.
 - **Interactive Gameplay:** Receive real-time feedback on your guesses, including how close you are to the correct country.
 - **Geography Learning:** Improve your knowledge of world geography with each guess, using color-coded hints based on distance.
 - **Leaderboard:** Compete with friends and players around the world to see who can guess the mystery country in the fewest attempts.
