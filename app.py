@@ -105,7 +105,7 @@ def popall():
 @app.route("/country/play", methods=["POST"])
 def country_play():
     # try:
-    if session:
+    if "country" in session:
         icountry = request.form["country"]
     else:
         return redirect("/")
@@ -117,8 +117,7 @@ def country_play():
     if km != "error":
         g = session["guesses"]
         g.extend([icountry.lower()])
-        if icountry.lower() not in g:
-            session["guesses"] = g
+        session["guesses"] = g
         if km == "0":
             update(session["name"], len(session["guesses"]))
             return render_template("country.html", distance=km, guesses=g, won=True, leaderboard=leaderboard())
@@ -133,7 +132,7 @@ def country_play():
 @app.route("/city/play", methods=["POST"])
 def city_play():
     # try:
-    if session:
+    if "city" in session:
         icity = request.form["city"]
     else:
         return redirect("/")
@@ -145,8 +144,7 @@ def city_play():
     if km != "error":
         g = session["guesses"]
         g.extend([icity.lower()])
-        if icity.lower() not in g:
-            session["guesses"] = g
+        session["guesses"] = g
         if km == "0":
             update(session["name"], len(session["guesses"]))
             return render_template("city.html", distance=km, guesses=g, won=True, leaderboard=leaderboard())
