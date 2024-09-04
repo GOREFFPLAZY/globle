@@ -89,7 +89,7 @@ def city():
 
 @app.route("/restart")
 def restart():
-    return redirect("/pop")
+    return redirect("/popall")
 
 @app.route("/pop")
 def pop():
