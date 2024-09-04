@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gleezle</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='icon.png')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    <h1>gleezle</h1>
+    
+
+    <form action="/country/play" enctype="multipart/form-data" method="post">
+        <input type="text" required name="country">
+        <button type="submit">submit</button>
+        <h2>{{distance}} km</h2>
+        <h2>guesses: {{ guesses|length }}</h2>
+        <div class="bar">
+            <span></span>
+        </div>
+        <h2>{{error}}</h2>
+        
+        <div class="country-list">
+            {% for guess in guesses|reverse %}
+                <div class="country">
+                    <img src="https://www.countryflags.com/wp-content/uploads/{{  guess  }}-flag-png-large.png" onerror="imgchange(this)">
+                    <!-- <img src=https://www.countries-ofthe-world.com/flags-normal/flag-of-{{guess|capitalize}}.png"> -->
+                    <div>{{  guess|capitalize  }}</div>
+                </div>
+            {% endfor %}    
+        </div>
+    </form>
+
+    {% if won == True %}
+        <div class="won">correct!</div>
+
+        <script>
+            setTimeout(() => {
+                window.location.href = "/pop";
+            }, 3000);
+        </script>
+    {% endif %}
+
+    <div class="restart">
+        <a href="/restart">
+            <span class="material-symbols-outlined">
+                restart_alt
+                </span>
+        </a>
+    </div>
+
+    {% set di = (distance | int) %}
+    {% set progress = (di/20) * 100 %}
+    
+
+    <script>
+        function imgchange(element){
+            element.src = 'https://salonlfc.com/wp-content/uploads/2018/01/image-not-found-1-scaled.png'
+        }
+    </script>
+
+    <style>
+        .bar span{
+            inset: 50% auto auto {{progress|int}}% !important;
+        }
+    </style>
+</body>
+</html>

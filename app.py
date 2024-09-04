@@ -29,15 +29,37 @@ def random_country():
 
     return country
 
+def random_city():
+    with open("cities.csv", "r") as file:
+        cities = file.readlines()
+        city = random.choice(cities)
+
+    return city
+
 @app.route("/")
 def start():
+    return redirect("/city")
+    #return render_template("index.html")
+
+@app.route("/country")
+def country():
     if "country" in session:
         pass
     else:
         session["country"] = random_country()
         session["guesses"] = list()
 
-    return render_template("index.html", distance="distance in", won=False)
+    return render_template("country.html", distance="distance in", won=False)
+
+@app.route("/city")
+def city():
+    if "city" in session:
+        pass
+    else:
+        session["city"] = random_city()
+        session["guesses"] = list()
+
+    return render_template("city.html", distance="distance in", won=False)
 
 @app.route("/restart")
 def restart():
@@ -48,8 +70,8 @@ def pop():
     session.clear()
     return redirect("/")
 
-@app.route("/play", methods=["POST"])
-def play():
+@app.route("/country/play", methods=["POST"])
+def country_play():
     # try:
     if session:
         icountry = request.form["country"]
@@ -66,15 +88,41 @@ def play():
             g.extend([icountry.lower()])
             session["guesses"] = g
         if km == "0":
-            return render_template("index.html", distance=km, guesses=g, won=True)
+            return render_template("country.html", distance=km, guesses=g, won=True)
         else:
-            return render_template("index.html", distance=km, guesses=g, won=False)
+            return render_template("country.html", distance=km, guesses=g, won=False)
     else:
-        return render_template("index.html", distance="NaN", error="Invalid country :(", won=False)
+        return render_template("country.html", distance="NaN", error="Invalid country :(", won=False)
     # except:
     #     return 'vorp'
     #     return redirect("/")
 
+@app.route("/city/play", methods=["POST"])
+def city_play():
+    # try:
+    if session:
+        icity = request.form["city"]
+    else:
+        return redirect("/")
+    
+    km = distance(session["city"], icity)
+
+    #return f"{session['country']} und {icountry}"
+
+    if km != "error":
+        g = session["guesses"]
+        if icity.lower() not in g:
+            g.extend([icity.lower()])
+            session["guesses"] = g
+        if km == "0":
+            return render_template("city.html", distance=km, guesses=g, won=True)
+        else:
+            return render_template("city.html", distance=km, guesses=g, won=False)
+    else:
+        return render_template("city.html", distance="NaN", error="Invalid city :(", won=False)
+    # except:
+    #     return 'vorp'
+    #     return redirect("/")
 
 if __name__ == "__main__":
     app.run(debug=False, port=5500)
