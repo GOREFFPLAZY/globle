@@ -38,8 +38,7 @@ def random_city():
 
 @app.route("/")
 def start():
-    return redirect("/city")
-    #return render_template("index.html")
+    return redirect("/country")
 
 @app.route("/country")
 def country():

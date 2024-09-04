@@ -23,6 +23,12 @@ body, html{
 h1{
     font-size: 5rem;
     line-height: 1;
+    margin-bottom: 0;
+}
+
+a{
+    text-decoration: none;
+    font-weight: 700;
 }
 
 form{
