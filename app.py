@@ -7,9 +7,9 @@ app = Flask(__name__)
 app.secret_key = "gleezeborpglorp"
 
 def distance(c1, c2):
-    if c1.strip().lower() == c2.strip().lower():
-        return "0"
     try:
+        if c1.strip().lower() == c2.strip().lower():
+            return "0"
         url = f"https://www.luftlinie.org/{c1}/{c2}"
         result = requests.get(url)
         doc = BeautifulSoup(result.content, "html.parser")
