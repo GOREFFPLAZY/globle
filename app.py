@@ -52,7 +52,7 @@ def leaderboard():
     with open('leaderboard.json', 'r') as file:
         data = json.load(file)
 
-    return data["leaderboard"]
+    return data["leaderboard"][:10]
 
 @app.route("/")
 def start():
@@ -70,7 +70,11 @@ def name():
 @app.route("/country")
 def country():
     if "country" in session and "name" in session:
-        pass
+        if session["country"] != None and session["name"] != None:
+            pass
+        else:
+            session["country"] = random_country()
+            session["guesses"] = list()
     else:
         session["country"] = random_country()
         session["guesses"] = list()
@@ -80,7 +84,11 @@ def country():
 @app.route("/city")
 def city():
     if "city" in session and "name" in session:
-        pass
+        if session["city"] != None and session["name"] != None:
+            pass
+        else:
+            session["city"] = random_city()
+            session["guesses"] = list()
     else:
         session["city"] = random_city()
         session["guesses"] = list()
@@ -89,7 +97,7 @@ def city():
 
 @app.route("/restart")
 def restart():
-    return redirect("/popall")
+    return redirect("/pop")
 
 @app.route("/pop")
 def pop():
@@ -149,7 +157,7 @@ def city_play():
             update(session["name"], len(session["guesses"]))
             return render_template("city.html", distance=km, guesses=g, won=True, leaderboard=leaderboard())
         else:
-            return render_template("city.html", distance=km, guesses=g, won=False, leaderboard=leaderboard())
+            return render_template("city.html", distance=km, guesses=g, won=False, c=session["city"], leaderboard=leaderboard())
     else:
         return render_template("city.html", distance="NaN", error="Invalid city :(", won=False, leaderboard=leaderboard())
     # except:
