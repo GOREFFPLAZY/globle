@@ -37,22 +37,22 @@ def random_city():
 
     return city
 
-def update(name, guesses):
-    with open('leaderboard.json', 'r') as file:
-        data = json.load(file)
+# def update(name, guesses):
+#     with open('leaderboard.json', 'r') as file:
+#         data = json.load(file)
 
-    temp = data["leaderboard"]
-    temp.append([name, guesses])
-    data["leaderboard"] = sorted(temp, key=lambda x: x[1])
+#     temp = data["leaderboard"]
+#     temp.append([name, guesses])
+#     data["leaderboard"] = sorted(temp, key=lambda x: x[1])
 
-    with open('leaderboard.json', 'w') as file:
-        json.dump(data, file, indent=4)
+#     with open('leaderboard.json', 'w') as file:
+#         json.dump(data, file, indent=4)
 
-def leaderboard():
-    with open('leaderboard.json', 'r') as file:
-        data = json.load(file)
+# def leaderboard():
+#     with open('leaderboard.json', 'r') as file:
+#         data = json.load(file)
 
-    return data["leaderboard"][:10]
+#     return data["leaderboard"][:10]
 
 @app.route("/")
 def start():
@@ -127,12 +127,12 @@ def country_play():
         g.extend([icountry.lower()])
         session["guesses"] = g
         if km == "0":
-            update(session["name"], len(session["guesses"]))
-            return render_template("country.html", distance=km, guesses=g, won=True, leaderboard=leaderboard())
+            #update(session["name"], len(session["guesses"]))
+            return render_template("country.html", distance=km, guesses=g, won=True, leaderboard=[])
         else:
-            return render_template("country.html", distance=km, guesses=g, won=False, c=session["country"], leaderboard=leaderboard())
+            return render_template("country.html", distance=km, guesses=g, won=False, c=session["country"], leaderboard=[])
     else:
-        return render_template("country.html", distance="NaN", error="Invalid country :(", won=False, leaderboard=leaderboard())
+        return render_template("country.html", distance="NaN", error="Invalid country :(", won=False, leaderboard=[])
     # except:
     #     return 'vorp'
     #     return redirect("/")
@@ -154,12 +154,12 @@ def city_play():
         g.extend([icity.lower()])
         session["guesses"] = g
         if km == "0":
-            update(session["name"], len(session["guesses"]))
-            return render_template("city.html", distance=km, guesses=g, won=True, leaderboard=leaderboard())
+            #update(session["name"], len(session["guesses"]))
+            return render_template("city.html", distance=km, guesses=g, won=True, leaderboard=[])
         else:
-            return render_template("city.html", distance=km, guesses=g, won=False, c=session["city"], leaderboard=leaderboard())
+            return render_template("city.html", distance=km, guesses=g, won=False, c=session["city"], leaderboard=[])
     else:
-        return render_template("city.html", distance="NaN", error="Invalid city :(", won=False, leaderboard=leaderboard())
+        return render_template("city.html", distance="NaN", error="Invalid city :(", won=False, leaderboard=[])
     # except:
     #     return 'vorp'
     #     return redirect("/")
