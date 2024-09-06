@@ -165,4 +165,4 @@ def city_play():
     #     return redirect("/")
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5500)
+    app.run(debug=False, port=5500)
