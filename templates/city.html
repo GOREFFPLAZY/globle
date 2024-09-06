@@ -15,14 +15,14 @@
     
 
     <form action="/city/play" enctype="multipart/form-data" method="post">
-        <input type="text" required name="city">
-        <button type="submit">submit</button>
-        <h2>{{distance}} km</h2>
-        <h2>guesses: {{ guesses|length }}</h2>
+        <input type="text" required name="city" placeholder="Guess a city!">
+        <button type="submit">guess</button>
+        <h2 class="tag">{{distance}} km away</h2>
+        <h2 class="tag">guesses: {{ guesses|length }}</h2>
+        <h2>{{error}}</h2>
         <div class="bar">
             <span></span>
         </div>
-        <h2>{{error}}</h2>
         
         <div class="country-list">
             {% for guess in guesses|reverse %}

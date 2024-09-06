@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
 
 *{
-    font-family: Noto Sans;
+    font-family: SUSE;
     box-sizing: border-box;
 }
 
 :root{
-    --fg: #000;
-    --bg: #fafffa;
+    --fg: #15060c;
+    --bg: #fcf4f8;
+    --pr: #c9367b;
+    --se: #ddb35a;
+    --ac: #adb42a;
 }
 
 body, html{
     margin: 0;
+    height: 100vh;
     width: 100vw;
     background-color: var(--bg);
     display: flex;
@@ -20,22 +25,30 @@ body, html{
     overflow: hidden;
 }
 
+::selection{
+    background-color: var(--ac);
+    color: var(--bg);
+}
+
 h1{
-    font-size: 5rem;
+    font-size: 8rem;
     line-height: 1;
     margin-bottom: 0;
+    margin-top: 2vh;
+    user-select: none;
 }
 
 a{
     text-decoration: none;
     font-weight: 700;
+    user-select: none;
 }
 
 form{
     display: flex;
     flex-direction: column;
     flex: 1;
-    width: 15%;
+    width: 20%;
     position: absolute;
     inset: 50% auto auto 50%;
     transform: translate(-50%, -50%);
@@ -50,11 +63,16 @@ form input, form button{
 }
 
 button{
-    background: var(--fg) !important;
     color: var(--bg);
     border: none;
     margin-top: 1vh;
     cursor: pointer;
+    background: var(--fg) !important;
+    transition: 500ms ease-in-out;
+}
+
+button:hover{
+    background: var(--ac) !important;
 }
 
 input{
@@ -64,6 +82,22 @@ input{
 h2{
     text-align: center;
 }
+
+h2.tag{
+    margin: 0;
+}
+
+h2.tag:nth-of-type(1){
+    margin-top: 1vh;
+}
+
+h2.tag:nth-of-type(n){
+    margin-bottom: 1vh;
+}
+
+/* h2:not(:last-child){
+    margin-bottom: .5vh;
+} */
 
 .restart{
     position: absolute;
@@ -83,7 +117,8 @@ a{
     height: 2vh;
     border-radius: 1rem;
     /* background: linear-gradient(to right, red, orange, yellow, green, darkgreen); */
-    background: linear-gradient(to right, darkgreen, green, yellow, orange, red);
+    /* background: linear-gradient(to right, darkgreen, green, yellow, orange, red); */
+    background: linear-gradient(to right, var(--ac), var(--se), var(--pr));
     position: relative;
 }
 
@@ -200,13 +235,53 @@ a{
     border: none;
 }
 
+.world, .worldtwo{
+    position: absolute;
+    /* background-color: red; */
+    aspect-ratio: 1;
+    width: 25vw;
+    inset: auto auto -10% -10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.worldtwo{
+    inset: -10% -10% auto auto;
+}
+
+.world span, .worldtwo span{
+    font-size: 25vw;
+    opacity: .2;
+    color: var(--ac);
+    filter: blur(5px);
+    transition: 500ms ease;
+}
+
+.worldtwo span{
+    color: var(--pr);
+}
+
+.world span:hover, .worldtwo span:hover{
+    filter: blur(0px);
+    opacity: .3;
+}
+
 @media (width < 1750px){
     form{
         width: 50%;
     }
     
     h1{
-        font-size: 2rem !important;
+        font-size: 3rem !important;
+    }
+
+    .world{
+        inset: auto auto -2% -2%;
+    }
+
+    .worldtwo{
+        inset: -2% -2% auto auto;
     }
 }
 
@@ -216,7 +291,7 @@ a{
     }
 
     h1{
-        font-size: 1rem !important;
+        font-size: 1.5rem !important;
         font-weight: 700;
     }
 

@@ -12,13 +12,20 @@
 <body>
     <h1>gleezle</h1>
     <a href="/city">switch to cities</a>
+
+    <div class="world">
+        <span class="material-symbols-outlined">public</span>
+    </div>
     
+    <div class="worldtwo">
+        <span class="material-symbols-outlined">public</span>
+    </div>
 
     <form action="/country/play" enctype="multipart/form-data" method="post">
-        <input type="text" required name="country">
-        <button type="submit">submit</button>
-        <h2>{{distance}} km</h2>
-        <h2>guesses: {{ guesses|length }}</h2>
+        <input type="text" required name="country" placeholder="Guess a country!">
+        <button type="submit">guess</button>
+        <h2 class="tag">{{distance}} km away</h2>
+        <h2 class="tag">guesses: {{ guesses|length }}</h2>
         <div class="bar">
             <span></span>
         </div>
